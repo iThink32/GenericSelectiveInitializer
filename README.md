@@ -29,9 +29,7 @@ and the other func is
 ```
     func valueFrom<ReturnType,Type>(keyPath:KeyPath<GenericSelectiveInitializer,Type>,defaultValue:ReturnType) -> ReturnType {
         let value = self[keyPath:keyPath]
-        print("value is \(value)")
         let mirror = Mirror(reflecting: value)
-        print("number of children is \(mirror.children.count)")
         guard mirror.displayStyle == Mirror.DisplayStyle.optional,mirror.children.count == 1,let child = mirror.children.first?.value as? ReturnType else{
             return defaultValue
         }
