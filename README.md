@@ -11,7 +11,7 @@ This repo shows you how.
 
 Consider the class in the repo , it has two simple funcs
 
-```
+```swift
     func initializeWith<T>(keypath:ReferenceWritableKeyPath<GenericSelectiveInitializer,T>,value:T) {
         self[keyPath:keypath] = value
     }
@@ -19,14 +19,14 @@ Consider the class in the repo , it has two simple funcs
 
 This func is can generically initialize any instance varible via keypaths like
 
-```
+```swift
         var obj = GenericSelectiveInitializer()
         obj.initializeWith(keypath: \GenericSelectiveInitializer.a, value: 12)
 ```
 
 and the other func is 
 
-```
+```swift
     func valueFrom<ReturnType,Type>(keyPath:KeyPath<GenericSelectiveInitializer,Type>,defaultValue:ReturnType) -> ReturnType {
         let value = self[keyPath:keyPath]
         let mirror = Mirror(reflecting: value)
@@ -39,7 +39,7 @@ and the other func is
 
 This func gets you the unwrapped value without having to use an if let or guard via reflection :p like
 
-```
+```swift
 print(obj.valueFrom(keyPath: \GenericSelectiveInitializer.a, defaultValue: 14))
 ```
 
